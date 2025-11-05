@@ -62,7 +62,17 @@ cat *_HCO.fasta > all_HCO.fasta
 ```
 
 # 5 - Merge using custom script 
-I wasn't able to get the seqs_to_barcodes.py script from Manaaki whenua to work, the taxonomic stuff wasn't working for my data (we were unsure what the species were, which was why we were sequencing for COI), so I used a script that merges them based on the longest overlap and then blasted them 
+I wasn't able to get the seqs_to_barcodes.py script from Manaaki whenua to work, the taxonomic stuff wasn't working for my data (we were unsure what the species were, which was why we were sequencing for COI), so I used a script that merges them based on the longest overlap (with min overlap of 85 and min identity of 92). This code also aligns the HCO and LCO sequences using EMBOSS.
+
+Alignment ensures:
+
+They’re oriented correctly (so you don’t accidentally join 3′ to 3′)
+
+The overlapping region is identified exactly (where both reads cover the same bases)
+
+Any differences or small indels are resolved properly
+
+You don’t duplicate the overlap region or lose bases at the junction
 
 
 
